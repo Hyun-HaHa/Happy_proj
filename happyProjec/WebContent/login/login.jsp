@@ -51,7 +51,7 @@
 				<!-- 비밀번호 찾기, 회원가입 -->
 				<p class="signForm_bottom">
 					<span class="find-pw">
-						<a href="#">비밀번호 찾기</a>
+						<a href="../find_pw.jsp">비밀번호 찾기</a>
 					</span>
 					<span class="signUp-btn">
 						<a href="#">회원가입</a>
