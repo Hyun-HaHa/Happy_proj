@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Happyever - 국내여행 플래너</title>
+<script src="http://code.jquery.com/jquery.min.js"></script>
 <style type="text/css">@import url("login_style.css");</style>
 </head>
 <body>
@@ -25,11 +26,13 @@
 						<p class="titleText">이메일</p>
 						<div class="inputText">
 							<input id="signForm_email" placeholder="이메일을 입력해 주세요." type="email">
+							<p class="error-message_email"></p>
 						</div>
 						
 						<p class="titleText">비밀번호</p>
 						<div class="inputText">
 							<input id="signForm_pw" placeholder="비밀번호를 입력해 주세요." type="password" autocomplete="current-password">
+							<p class="error-message_pw"></p>
 						</div>
 						<input type="submit" autocomplete="off" style="display: none;">
 					</form>
@@ -51,7 +54,7 @@
 				<!-- 비밀번호 찾기, 회원가입 -->
 				<p class="signForm_bottom">
 					<span class="find-pw">
-						<a href="../find_pw.jsp">비밀번호 찾기</a>
+						<a href="../find_pw2.jsp">비밀번호 찾기</a>
 					</span>
 					<span class="signUp-btn">
 						<a href="#">회원가입</a>
@@ -61,5 +64,26 @@
 			</div>
 		</div>
 	</div>
+	
+	<script>
+		$(document).ready(function(){
+			
+	    let id = document.querySelector('#signForm_email');
+	    let error = document.querySelector('.error-message_email');
+	    
+	    id.addEventListener("focusout", checkId);
+	    
+	    function checkId(){
+	    	let idPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/
+
+	        if(!idPattern.test(id.value)){	//정규표현식을 통과하지 못한다면
+	        	error.innerHTML = "올바른 이메일 형식이 아닙니다. 다시 입력해 주세요.";
+	        	error.style.display = "block";
+	        } else{
+	        	error.innerHTML = "";
+	        }
+	    }
+		});
+	</script>
 </body>
 </html>
